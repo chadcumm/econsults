@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {mPageService, PersonService } from "@clinicaloffice/clinical-office-mpage";
 import { AppointmentDataService } from './appointment-data.service';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +10,18 @@ import { AppointmentDataService } from './appointment-data.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  public ready = false;
+  public ready = false; 
+  referringProvider: number[] = [];
+  clinicEncounter: any[] = [];
+
+  //title: string = "eConsults"
 
   constructor(
     public activatedRoute: ActivatedRoute,
     public mPage: mPageService,
     public personService: PersonService,
-    public appointmentDS: AppointmentDataService
+    public appointmentDS: AppointmentDataService,
+    public maButton: MatButtonModule
   ) { }
 
   ngOnInit(): void {
@@ -31,6 +37,7 @@ export class AppComponent implements OnInit {
     setTimeout((e: any) => {
       this.mPage.setMaxInstances(10, true, 'CHART');
       this.ready = true;
+
 
       // Add your initialization code here - do not place outside setTimeout function
       this.appointmentDS.loadAppointments();

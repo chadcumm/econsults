@@ -1,12 +1,26 @@
 
-<div *ngIf="!ready">Loading, be patient it's Cerner.</div>
+<div *ngIf="!ready">Loading Component Details....</div>
 
 <div *ngIf="ready">
 
-    <p>Patient Name:  {{ personService.get()['nameFullFormatted'] }}</p>
+<mpage-select 
+    label="Clinic" 
+    class="clinic_list"
+    [(ngModel)]="clinicEncounter" 
+    [values]="['Clinton Family','Chad Clinic']">
+</mpage-select>
 
-    <app-appointment-summary *ngIf="appointmentDS.appointmentsLoaded"></app-appointment-summary>
 
+<mpage-select 
+    label="Referring Provider" 
+    class="referring_search"
+    [(ngModel)]="referringProvider" 
+    [physicianInd]="true" 
+    [searchable]="true"
+    hintLabel="Referring Provider will default to PCP if not specified">
+</mpage-select>
+
+<button mat-raised-button>Create Encounter</button>
 </div>
 
 <mpage-log-component></mpage-log-component>
