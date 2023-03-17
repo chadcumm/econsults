@@ -1,4 +1,13 @@
-<h1>Create something amazing here!</h1>
+
+<div *ngIf="!ready">Loading, be patient it's Cerner.</div>
+
+<div *ngIf="ready">
+
+    <p>Patient Name:  {{ personService.get()['nameFullFormatted'] }}</p>
+
+    <app-appointment-summary *ngIf="appointmentDS.appointmentsLoaded"></app-appointment-summary>
+
+</div>
 
 <mpage-log-component></mpage-log-component>
 

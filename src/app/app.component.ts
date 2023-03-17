@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {mPageService} from "@clinicaloffice/clinical-office-mpage";
+import {mPageService, PersonService } from "@clinicaloffice/clinical-office-mpage";
+import { AppointmentDataService } from './appointment-data.service';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +9,13 @@ import {mPageService} from "@clinicaloffice/clinical-office-mpage";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  public ready = false;
 
   constructor(
     public activatedRoute: ActivatedRoute,
-    public mPage: mPageService
+    public mPage: mPageService,
+    public personService: PersonService,
+    public appointmentDS: AppointmentDataService
   ) { }
 
   ngOnInit(): void {
@@ -25,10 +29,15 @@ export class AppComponent implements OnInit {
 
     // Perform MPage Initialization
     setTimeout((e: any) => {
-      this.mPage.setMaxInstances(2, true, 'CHART');
+      this.mPage.setMaxInstances(10, true, 'CHART');
+      this.ready = true;
 
       // Add your initialization code here - do not place outside setTimeout function
+      this.appointmentDS.loadAppointments();
+    
     }, 0);
+
+
   }
 
 }
