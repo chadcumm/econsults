@@ -22,16 +22,20 @@
 
 <button (click)="createEncounter($event)" mat-raised-button>Create Encounter</button>
 <ng-container *ngIf="encounterCreated">
-    <div>Here is the link to the new encounter</div>
-    {{newEncntrID}}
-    {{newPersonID}}
-    <a 
-        href="#"
-        (click)="openEncounter($event)"
-    >Open New Encounter</a>
-    <a href="#" id="applink"></a>
+    <br><br><br>
+    <div>The new encounter has been created.  Click to
+        <a 
+            href="#"
+            (click)="openEncounter($event)"
+        >Open New Encounter</a>
+        <a href="#" id="applink"></a>
+    </div>
     </ng-container>
 </div>
-v2
+
+<div class='separator'>
+    <br><br><br>
+[this component is currently in development]
+</div>
 <mpage-log-component></mpage-log-component>
 

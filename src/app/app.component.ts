@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {mPageService, PersonService } from "@clinicaloffice/clinical-office-mpage";
+import {mPageService, PersonService,EncounterService } from "@clinicaloffice/clinical-office-mpage";
 import { AppointmentDataService } from './appointment-data.service';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
   openEncounter(event?: Event) {
     const el = document.getElementById('applink');
         // @ts-ignore
-        el.href = 'javascript:APPLINK(0,"Powerchart.exe","/PERSONID=' + this.newPersonID + '")';
+        el.href = 'javascript:APPLINK(0,"Powerchart.exe","/PERSONID=' + this.newPersonID + ' /ENCNTRID=' + this.newEncntrID +'")';
       
       // @ts-ignore
       el.click();
@@ -46,6 +46,7 @@ export class AppComponent implements OnInit {
     public personService: PersonService,
     public appointmentDS: AppointmentDataService,
     public maButton: MatButtonModule,
+    public encntrService: EncounterService
   ) { }
 
   ngOnInit(): void {
@@ -64,7 +65,7 @@ export class AppComponent implements OnInit {
 
 
       // Add your initialization code here - do not place outside setTimeout function
-      
+      this.encntrService.load();
     }, 0);
 
 
