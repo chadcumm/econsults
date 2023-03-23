@@ -27,10 +27,11 @@
     {{newPersonID}}
     <a 
         href="#"
-        onclick="javascript:APPLINK(0,'Powerchart.exe','/PERSONID='+ newPersonID + '/ENCNTRID=' + newEncntrID)"
+        (click)="openEncounter($event)"
     >Open New Encounter</a>
+    <a href="#" id="applink"></a>
     </ng-container>
 </div>
-
+v2
 <mpage-log-component></mpage-log-component>
 

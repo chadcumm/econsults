@@ -29,6 +29,17 @@ export class AppComponent implements OnInit {
     }, 1000)
   }
 
+  openEncounter(event?: Event) {
+    const el = document.getElementById('applink');
+        // @ts-ignore
+        el.href = 'javascript:APPLINK(0,"Powerchart.exe","/PERSONID=' + this.newPersonID + '")';
+      
+      // @ts-ignore
+      el.click();
+  }
+    //APPLINK(0,'Powerchart.exe','/PERSONID='+ this.newPersonID + '/ENCNTRID=' + this.newEncntrID);
+  
+
   constructor(
     public activatedRoute: ActivatedRoute,
     public mPage: mPageService,
