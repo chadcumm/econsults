@@ -21,6 +21,15 @@
 </mpage-select>
 
 <button (click)="createEncounter($event)" mat-raised-button>Create Encounter</button>
+<ng-container *ngIf="encounterCreated">
+    <div>Here is the link to the new encounter</div>
+    {{newEncntrID}}
+    {{newPersonID}}
+    <a 
+        href="#"
+        onclick="javascript:APPLINK(0,'Powerchart.exe','/PERSONID='+ newPersonID + '/ENCNTRID=' + newEncntrID)"
+    >Open New Encounter</a>
+    </ng-container>
 </div>
 
 <mpage-log-component></mpage-log-component>
