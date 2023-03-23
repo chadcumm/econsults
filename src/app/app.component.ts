@@ -16,6 +16,10 @@ export class AppComponent implements OnInit {
 
   //title: string = "eConsults"
 
+  createEncounter(event?: Event)  {
+    this.mPage.putLog("createEncounter Clicked")
+  }
+
   constructor(
     public activatedRoute: ActivatedRoute,
     public mPage: mPageService,
