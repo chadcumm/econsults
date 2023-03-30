@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {mPageService, PersonService,EncounterService } from "@clinicaloffice/clinical-office-mpage";
+import {mPageService, PersonService,EncounterService,CustomService } from "@clinicaloffice/clinical-office-mpage";
 import { AppointmentDataService } from './appointment-data.service';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -27,10 +27,11 @@ export class AppComponent implements OnInit {
   createEncounter(event?: Event)  {
     this.mPage.putLog("createEncounter Clicked")
     this.mPage.putLog(JSON.stringify(this.prompts))
-    
+    this.callCreateEncounter();
+
     this.encounterCreated = false;
     setTimeout(() => {
-      this.mPage.putLog("encounter created")
+      this.mPage.putLog(this.PM.get("new_encounter").newEncntrId)
       this.encounterCreated = true;
     }, 1000)
   }
@@ -45,14 +46,29 @@ export class AppComponent implements OnInit {
   }
     //APPLINK(0,'Powerchart.exe','/PERSONID='+ this.newPersonID + '/ENCNTRID=' + this.newEncntrID);
   
+    public callCreateEncounter(): void {
 
+  
+      this.PM.load({
+        customScript: {
+          script: [
+            {
+              name: 'cov_co_add_encntr:dba',
+              run: 'pre',
+              id: 'new_encounter'
+            }
+          ]
+        }
+      }, undefined, (() => { this.encounterCreated = true; }));
+    }
   constructor(
     public activatedRoute: ActivatedRoute,
     public mPage: mPageService,
     public personService: PersonService,
     public appointmentDS: AppointmentDataService,
     public maButton: MatButtonModule,
-    public encntrService: EncounterService
+    public encntrService: EncounterService,
+    public PM: CustomService
   ) { }
 
   ngOnInit(): void {
