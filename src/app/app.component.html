@@ -6,7 +6,7 @@
 <mpage-select 
     label="Clinic" 
     class="clinic_list"
-    [(ngModel)]="clinicEncounter" 
+    [(ngModel)]="this.prompts.org_name"
     [values]="['Knoxville Neurology Specialists']">
 </mpage-select>
 
@@ -14,7 +14,7 @@
 <mpage-select 
     label="Referring Provider" 
     class="referring_search"
-    [(ngModel)]="referringProvider" 
+    [(ngModel)]="this.prompts.provider" 
     [physicianInd]="true" 
     [searchable]="true"
     hintLabel="Referring Provider will default to current encounter Attending if not specified">

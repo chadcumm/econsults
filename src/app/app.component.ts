@@ -15,6 +15,10 @@ export class AppComponent implements OnInit {
   clinicEncounter: any[] = [];
   public newEncntrID: number = 125195514;
   public newPersonID: number = 15850433;
+  public prompts = {
+    org_name: '',
+    provider: 0
+  }
 
   public encounterCreated: boolean = false;
 
@@ -22,6 +26,8 @@ export class AppComponent implements OnInit {
 
   createEncounter(event?: Event)  {
     this.mPage.putLog("createEncounter Clicked")
+    this.mPage.putLog(JSON.stringify(this.prompts))
+    
     this.encounterCreated = false;
     setTimeout(() => {
       this.mPage.putLog("encounter created")
