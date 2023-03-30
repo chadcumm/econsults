@@ -11,10 +11,14 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class AppComponent implements OnInit {
   public ready = false; 
+
   referringProvider: number[] = [];
   clinicEncounter: any[] = [];
-  public newEncntrID: number = 125195514;
-  public newPersonID: number = 15850433;
+  
+  public newEncntrID: number = 0;
+  public newPersonID: number = 0;
+  public newFIN: string = "FIN";
+
   public prompts = {
     org_name: '',
     provider: 0
@@ -31,7 +35,7 @@ export class AppComponent implements OnInit {
 
     this.encounterCreated = false;
     setTimeout(() => {
-      this.mPage.putLog(this.PM.get("new_encounter").newEncntrId)
+      //this.mPage.putLog(this.PM.get("new_encounter").newEncntrId)
       this.encounterCreated = true;
     }, 1000)
   }
@@ -55,11 +59,16 @@ export class AppComponent implements OnInit {
             {
               name: 'cov_co_add_encntr:dba',
               run: 'pre',
-              id: 'new_encounter'
+              id: 'new_encounter',
+              parameters: this.prompts
             }
           ]
         }
-      }, undefined, (() => { this.encounterCreated = true; }));
+      }, undefined, (() => { 
+          this.newEncntrID = this.PM.get("new_encounter").newEncntrId;
+          this.newPersonID = this.PM.get("new_encounter").personId
+          this.newFIN = this.PM.get("new_encounter").newFin;
+        }));
     }
   constructor(
     public activatedRoute: ActivatedRoute,
