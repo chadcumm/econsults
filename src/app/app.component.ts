@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   
   public newEncntrID: number = 0;
   public newPersonID: number = 0;
-  public newFIN: string = "FIN";
+  public newFIN: string = "Error Creating new Encounter. Contact Support.";
 
   public prompts = {
     org_name: '',
@@ -93,10 +93,10 @@ export class AppComponent implements OnInit {
     setTimeout((e: any) => {
       this.mPage.setMaxInstances(2, true, 'CHART');
       this.ready = true;
-
+      this.prompts.org_name = "Knoxville Neurology Specialists"
 
       // Add your initialization code here - do not place outside setTimeout function
-      this.encntrService.load();
+      //this.encntrService.load();
     }, 0);
 
 
