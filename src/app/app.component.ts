@@ -53,6 +53,7 @@ export class AppComponent implements OnInit {
   
     public callCreateEncounter(): void {
 
+      this.prompts.user_id = this.mPage.prsnlId
   
       this.PM.load({
         customScript: {
@@ -96,7 +97,6 @@ export class AppComponent implements OnInit {
       this.ready = true;
       this.prompts.org_name = "Knoxville Neurology Specialists"
       
-      this.prompts.user_id = this.mPage.prsnlId
       this.prompts.provider = this.prompts.user_id
       // Add your initialization code here - do not place outside setTimeout function
       //this.encntrService.load();
