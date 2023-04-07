@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
 
   createEncounter(event?: Event)  {
     this.mPage.putLog("createEncounter Clicked")
-    this.mPage.putLog(JSON.stringify(this.prompts))
+    //this.mPage.putLog(JSON.stringify(this.prompts))
     this.callCreateEncounter();
 
     this.encounterCreated = false;
