@@ -21,7 +21,8 @@ export class AppComponent implements OnInit {
 
   public prompts = {
     org_name: '',
-    provider: 0
+    provider: 0, 
+    user_id: 0
   }
 
   public encounterCreated: boolean = false;
@@ -94,7 +95,9 @@ export class AppComponent implements OnInit {
       this.mPage.setMaxInstances(2, true, 'CHART');
       this.ready = true;
       this.prompts.org_name = "Knoxville Neurology Specialists"
-
+      
+      this.prompts.user_id = this.mPage.prsnlId
+      this.prompts.provider = this.prompts.user_id
       // Add your initialization code here - do not place outside setTimeout function
       //this.encntrService.load();
     }, 0);
