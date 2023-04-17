@@ -22,6 +22,7 @@ export class AppComponent implements OnInit {
   public prompts = {
     org_name: '',
     provider: 0, 
+    provider_name: '',
     user_id: 0
   }
 
@@ -97,7 +98,8 @@ export class AppComponent implements OnInit {
       this.ready = true;
       this.prompts.org_name = "Covenant Neurohospitalists - Trustee Tower"
       
-      this.prompts.provider = this.prompts.user_id
+      this.prompts.provider = this.encntrService.getPrsnlReltn('ADMITDOC')['personId']
+      this.prompts.provider_name = this.encntrService.getPrsnlReltn('ADMITDOC')['nameFullFormatted']
       // Add your initialization code here - do not place outside setTimeout function
       //this.encntrService.load();
     }, 0);
