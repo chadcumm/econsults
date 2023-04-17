@@ -35,6 +35,10 @@
   },
   "devDependencies": {
     "@angular/compiler-cli": "^12.2.16",
+    "@nrwl/cli": "12.10.1",
+    "@nrwl/nx-cloud": "12.5.4",
+    "@nrwl/tao": "12.10.1",
+    "@nrwl/workspace": "12.10.1",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.20.37",
     "jasmine-core": "~3.7.0",
