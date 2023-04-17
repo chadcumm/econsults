@@ -19,7 +19,7 @@
     [searchable]="true"
     hintLabel="Referring Provider will default to current encounter Attending if not specified">
 </mpage-select>
-
+{{encntrService.getPrsnlReltn('ADMITDOC')['nameFullFormatted']}}
 <button (click)="createEncounter($event)" mat-raised-button>Create Encounter</button>
 <ng-container *ngIf="encounterCreated">
     <br><br><br>
