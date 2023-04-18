@@ -3728,8 +3728,9 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
   vertical-align: bottom;
 }
 .smallHidden {
-  color: #b3b2b2;
+  color: #d5d5d5;
   size: 10pt;
+  font-style: italic;
 }
 
 /*# sourceMappingURL=styles.css.map*/
