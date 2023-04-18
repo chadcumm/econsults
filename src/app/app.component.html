@@ -10,7 +10,7 @@
     [values]="['Covenant Neurohospitalists - Trustee Tower','Knoxville Neurology Specialists']">
 </mpage-select>
 
-
+<ng-container *ngIf="ready">
 <mpage-select 
     label="Referring Provider" 
     class="referring_search"
@@ -19,7 +19,7 @@
     [searchable]="true"
     hintLabel="Referring Provider will default to current encounter Attending if not specified">
 </mpage-select>
-{{encntrService.getPrsnlReltn('ADMITDOC')['nameFullFormatted']}}
+</ng-container>
 <button (click)="createEncounter($event)" mat-raised-button>Create Encounter</button>
 <ng-container *ngIf="encounterCreated">
     <br><br><br>
@@ -35,7 +35,7 @@
 
 <div class='separator'>
     <br><br><br>
-[this component is currently in development v{{currentApplicationVersion}}]
+v{{currentApplicationVersion}}
 </div>
 <mpage-log-component></mpage-log-component>
 

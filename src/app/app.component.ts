@@ -13,7 +13,7 @@ import {environment} from '../environments/environment';
 })
 export class AppComponent implements OnInit {
   currentApplicationVersion = environment.appVersion;
-  public ready = false; 
+  public isReady = false; 
 
   referringProvider: number[] = [];
   clinicEncounter: any[] = [];
@@ -98,7 +98,7 @@ export class AppComponent implements OnInit {
     // Perform MPage Initialization
     setTimeout((e: any) => {
       this.mPage.setMaxInstances(2, true, 'CHART');
-      this.ready = true;
+      //this.ready = true;
       this.prompts.org_name = "Covenant Neurohospitalists - Trustee Tower"
       // Add your initialization code here - do not place outside setTimeout function
       this.encntrService.load({
@@ -120,6 +120,13 @@ export class AppComponent implements OnInit {
     }, 0);
 
 
+  }
+
+  get ready(): boolean {
+    if (!this.isReady && this.encntrService.isLoaded()) {
+        this.isReady = true;
+      }
+    return this.isReady;    
   }
 
 }
