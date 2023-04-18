@@ -4,6 +4,7 @@ import {mPageService, PersonService,EncounterService,CustomService } from "@clin
 import { AppointmentDataService } from './appointment-data.service';
 import { MatButtonModule } from '@angular/material/button';
 import { ThrowStmt } from '@angular/compiler';
+import {environment} from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,7 @@ import { ThrowStmt } from '@angular/compiler';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  currentApplicationVersion = environment.appVersion;
   public ready = false; 
 
   referringProvider: number[] = [];
