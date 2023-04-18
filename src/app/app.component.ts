@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import {mPageService, PersonService,EncounterService,CustomService } from "@clinicaloffice/clinical-office-mpage";
 import { AppointmentDataService } from './appointment-data.service';
 import { MatButtonModule } from '@angular/material/button';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-root',
@@ -111,7 +112,7 @@ export class AppComponent implements OnInit {
       });
       this.prompts.provider = this.encntrService.getPrsnlReltn('ADMITDOC')['personId']
       this.prompts.provider_name = this.encntrService.getPrsnlReltn('ADMITDOC')['nameFullFormatted']
-      
+      this.mPage.putLog(JSON.stringify(this.prompts));
     }, 0);
 
 
