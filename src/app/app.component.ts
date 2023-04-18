@@ -97,9 +97,18 @@ export class AppComponent implements OnInit {
       this.mPage.setMaxInstances(2, true, 'CHART');
       this.ready = true;
       this.prompts.org_name = "Covenant Neurohospitalists - Trustee Tower"
-      
       // Add your initialization code here - do not place outside setTimeout function
-      this.encntrService.load();
+      this.encntrService.load({
+        payload: {
+          encounter: {
+            includeCodeValues: true,
+            aliases: true,
+            encounterInfo: true,
+            prsnlReltn: true,
+            locHist: false
+          }
+        }
+      });
       this.prompts.provider = this.encntrService.getPrsnlReltn('ADMITDOC')['personId']
       this.prompts.provider_name = this.encntrService.getPrsnlReltn('ADMITDOC')['nameFullFormatted']
       
