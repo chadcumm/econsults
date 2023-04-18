@@ -123,8 +123,6 @@ export class AppComponent implements OnInit {
         this.prompts.provider = this.encntrService.getPrsnlReltn('ATTENDDOC')['personId']
         this.prompts.provider_name = this.encntrService.getPrsnlReltn('ATTENDDOC')['nameFullFormatted']
         this.mPage.putLog(JSON.stringify(this.prompts));
-        this.mPage.putLog(this.encntrService.getPrsnlReltn('ATTENDDOC')['personId']);
-        this.mPage.putLog(this.encntrService.getPrsnlReltn('ATTENDDOC')['nameFullFormatted'])
       }
     return this.isReady;    
   }
